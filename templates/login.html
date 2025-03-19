@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Вход в систему</h2>
+    <form method="POST" action="{{ url_for('login') }}" class="login-form">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="email">Email:</label>
+            {{ form.email(class='form-control form-input') }} <!-- Убрали size attribute -->
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            {{ form.password(class='form-control form-input') }} <!-- Убрали size attribute -->
+        </div>
+        <div class="form-group">
+            {{ form.submit(class='btn btn-primary btn-block') }}
+        </div>
+    </form>
+    <p class="text-center">
+        Если у вас еще нет аккаунта, <a href="{{ url_for('register') }}">зарегистрируйтесь здесь</a>.
+    </p>
+    <p class="text-center">
+        Чтобы подать заявку на кредит, <a href="{{ url_for('apply_loan') }}">нажмите здесь</a>.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-container">
+    <h2>Подать заявку на кредит</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <label for="name">ФИО</label>
+        {{ form.name(class_='form-input') }}
+
+        <label for="email">Email</label>
+        {{ form.email(class_='form-input') }}
+
+        <label for="amount">Сумма кредита</label>
+        {{ form.amount(class_='form-input') }}
+
+        <label for="interest_rate">Процентная ставка (%)</label>
+        {{ form.interest_rate(class_='form-input') }}
+
+        <button type="submit" class="btn">Подать заявку</button>
+    </form>
+</div>
+{% endblock %}

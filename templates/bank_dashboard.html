@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Панель управления кредитами</h2>
+<table class="client-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Сумма</th>
+            <th>Процентная ставка (%)</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if loans %}
+            {% for loan in loans %}
+            <tr>
+                <td>{{ loan.id }}</td>
+                <td>{{ loan.amount }}</td>
+                <td>{{ loan.interest_rate }}</td>
+                <td>{{ loan.status }}</td>
+                <td>
+                    <a class="btn-approve" href="{{ url_for('approve_loan', loan_id=loan.id) }}">Одобрить</a>
+                    <a class="btn-reject" href="{{ url_for('reject_loan', loan_id=loan.id) }}">Отклонить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5">Кредиты отсутствуют.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

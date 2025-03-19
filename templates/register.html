@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-container">
+    <h2>Регистрация</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <label for="name">Имя</label>
+        {{ form.name(class_='form-input') }}
+
+        <label for="email">Email</label>
+        {{ form.email(class_='form-input') }}
+
+        <label for="password">Пароль</label>
+        {{ form.password(class_='form-input') }}
+
+        <button type="submit" class="btn">Зарегистрироваться</button>
+    </form>
+</div>
+{% endblock %}

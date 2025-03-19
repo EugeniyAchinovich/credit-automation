@@ -1,0 +1,29 @@
+<!-- templates/manage_users.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Управление пользователями</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Роль</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ 'Администратор' if user.is_admin else 'Пользователь' }}</td>
+            <td>
+                <a href="{{ url_for('toggle_administrator', user_id=user.id) }}">
+                    {{ 'Убрать админа' if user.is_admin else 'Назначить администратором' }}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
